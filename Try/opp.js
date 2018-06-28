@@ -1,6 +1,3 @@
-const express= require('express');
-const mysql=require('mysql');
-
 var fs=require('fs');
 
 console.log('Client-side code running');
