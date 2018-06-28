@@ -1,14 +1,17 @@
 {
-    "name": "app-service-hello-world",
-    "description": "Simple Hello World Node.js sample for Azure App Service",
-    "version": "0.0.1",
-    "private": true,
-    "license": "MIT",
-    "author": "Microsoft",
-    "engines": {
-        "node": ">=6.9.1"
-    },
-    "scripts": {
-        "start": "node index.js"
-    }
+  "name": "node",
+  "version": "1.0.0",
+  "description": "Using mysql with node",
+  "main": "opp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "generate-json-webpack-plugin": "^0.3.1",
+    "mysql": "^2.15.0",
+    "unique-random": "^2.0.0"
+  }
 }
