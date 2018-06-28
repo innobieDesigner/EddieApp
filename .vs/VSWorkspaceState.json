@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\bin"
   ],
-  "SelectedNode": "\\index.js",
+  "SelectedNode": "\\bin\\www",
   "PreviewInSolutionExplorer": false
 }
