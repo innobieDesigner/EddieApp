@@ -1,0 +1,17 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "Using mysql with node",
+  "main": "opp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "generate-json-webpack-plugin": "^0.3.1",
+    "mysql": "^2.15.0",
+    "unique-random": "^2.0.0"
+  }
+}
