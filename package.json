@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "app.js"
+    "start": "./app.js"
   },
   "description": "Building a Todo List application with DocumentDB",
   "author": {
