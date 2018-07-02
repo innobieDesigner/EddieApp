@@ -2,7 +2,7 @@
   "name": "Todo",
   "version": "0.0.0",
   "private": false,
-  "engines":{ "node": "8.11.3" }
+  "engines":{ "node": "8.11.3" },
   "scripts": {
     "start": "app.js"
   },
