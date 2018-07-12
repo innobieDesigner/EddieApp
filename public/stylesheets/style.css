@@ -1,0 +1,183 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #eee;
+    height: 100vh;
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* ---------- PLATFORM ----------*/
+
+.title {
+    font-size: 26px;
+    background-color: #ffd237;
+    color: #363636;
+    padding: 20px;
+    font-weight: 700;
+}
+
+.title-pair {
+    color: white;
+    background-color: #9d0086;
+}
+
+/* ---------- IMAGE LIST ---------- */
+
+#col-img {
+    width: 20%;
+    float: left;
+    background-color: #363636;
+    height: 100vh;
+}
+
+.image-item {
+    width: 90%;
+    padding: 5% 5%;
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.image-item:hover {
+    background-color: #555555;
+}
+
+.image-image {
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+
+.image-name {
+    color: #ffd237;
+    margin-left: 60px;
+    font-weight: 700;
+}
+
+/* ---------- LIST PAIRS ---------- */
+
+#col-pair {
+    width: 60%;
+    float: left;
+    overflow: auto;
+    height: 100vh;
+}
+
+.fifty {
+    width: 50%;
+    float: left;
+}
+
+#list-name .fifty{
+    width: 48%;
+    padding: 1%;
+    border-bottom: 1px solid black;
+    height: 40px;
+}
+
+#list-name .fifty p{
+    padding: 2% 0;
+}
+
+#list-name .fifty input{
+    width: 90%;
+    height: 20px;
+    padding: 1%;
+}
+
+#selected-images {
+    width: 50%;
+    float: left;
+}
+
+#selected-images .image-name{
+    color: #9d0086;
+    font-weight: 700;
+}
+#selected-images .image-item:hover{
+    background-color: #dddddd;
+}
+
+#selected-models {
+    width: 50%;
+    float: right;
+}
+
+#selected-models .model-name{
+    color: #9d0086;
+    font-weight: 700;
+}
+
+#selected-models .model-category{
+    color: #363636;
+}
+
+#selected-models .model-item:hover{
+    background-color: #dddddd;
+}
+
+.export-button{
+    width: 200px;
+    height: 40px;
+    color: white;
+    background-color: #9d0086;
+    font-size: 20px;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 20px;
+    right: 23%;
+}
+
+.reset-button{
+    width: 100px;
+    height: 40px;
+    color: white;
+    background-color: #9d0086;
+    font-size: 20px;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 20px;
+    left: 23%;
+}
+
+/* ---------- MODEL SIDE ---------- */
+
+#col-mod {
+    width: 20%;
+    float: left;
+    background-color: #363636;
+    height: 100vh;
+    overflow: auto;
+}
+
+.model-item {
+    width: 90%;
+    padding: 5% 5%;
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.model-item:hover {
+    background-color: #555555;
+}
+
+.model-image {
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+
+.model-name {
+    color: #ffd237;
+    margin-left: 60px;
+    font-weight: 700;
+}
+
+.model-category {
+    color: white;
+    margin-left: 60px;
+}
