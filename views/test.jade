@@ -1,0 +1,49 @@
+extends layout
+block content
+  h1 #{title}
+  br
+
+  table.table.table-striped.table-bordered
+    tr
+      td Username
+      td First_name
+      td Second_name
+      td Mail
+      td Password
+      td Reg Date
+    if (typeof users === "undefined")
+      tr
+        td
+    else
+      each user in users
+        tr
+          td #{user.uname}
+          td #{user.fname}
+          td #{user.sname}
+          td #{user.mail}
+          td #{user.pass}
+          - var date = new Date(user.regDate);
+          - var day = date.getDate();
+          - var month = date.getMonth() + 1;
+          - var year = date.getFullYear();
+          td #{month + "/" + day + "/" + year}
+  hr
+  form.well(action="/adduser", method="post")
+    .form-group
+      label(for="uname") Username:
+      input.form-control(name="uname", type="textbox")
+    .form-group
+      label(for="fname") First Name:
+      input.form-control(name="fname", type="textbox")
+    .form-group
+      label(for="sname") Second Name:
+      input.form-control(name="sname", type="textbox")
+    .form-group
+      label(for="mail") Mail:
+      input.form-control(name="mail", type="textbox")
+    .form-group
+      label(for="pass") Password:
+      input.form-control(name="pass", type="password")
+    br
+    button.btn(type="submit") Add user
+

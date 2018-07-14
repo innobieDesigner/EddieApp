@@ -1,0 +1,21 @@
+extends layout
+block content
+  h1 Login
+  br
+  - if (typeof(msg) !== 'undefined')
+    p= msg
+  - if (typeof(errors) !== 'undefined')
+    - each error in errors
+      p= error.msg
+      -console.log(error.msg)
+  form.well(action="/login", method="post")
+    .form-group
+      label(for="username") Username: 
+      input.form-control(name="username", type="textbox")
+    .form-group
+      label(for="pawword") Password: 
+      input.form-control(name="password", type="password")
+    br
+    button.btn.btn-primary(type="submit") Login
+  a(href="/signup")
+    button.btn Sign up

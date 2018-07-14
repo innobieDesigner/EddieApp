@@ -1,0 +1,28 @@
+extends layout
+block content
+    h1 User profile
+    br
+    table.table.table-striped.table-bordered
+        tr
+            td Username
+            td #{loggedIn[0].uname}
+        
+        tr
+            td Firstname
+            td #{loggedIn[0].fname}
+        
+        tr
+            td Lastname
+            td #{loggedIn[0].lname}
+        
+        tr
+            td Mail
+            td #{loggedIn[0].mail}
+        
+        tr
+            td Registration date
+            - var date = new Date(loggedIn[0].regDate);
+            - var day = date.getDate();
+            - var month = date.getMonth() + 1;
+            - var year = date.getFullYear();
+            td #{month + "/" + day + "/" + year}
