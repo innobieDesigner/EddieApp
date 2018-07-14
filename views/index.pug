@@ -1,0 +1,53 @@
+extends layout
+
+block content
+    div#col-img
+        div.title
+            p Image List
+        div#image-id-0.image-item(onclick='add_image(this)')
+            img.image-image(src='/images/rip.png', alt='Image')
+            p.image-name Image Name 0
+    div#col-pair
+        div.title.title-pair
+            p Selected Items
+        div.fifty
+            div.title
+                p Selected Image
+        div.fifty
+            div.title
+                p Selected model
+        div#list-name
+            div.fifty
+                p List name:
+            div.fifty
+                input(id='input-list-name' type='textarea' placeholder="List's name")
+        div.lists
+            div#selected-images
+            div#selected-models
+        div.button-export
+            button(class='export-button', type='submit' onclick='get_json()') Submit/Save
+            // button(class='reset-button', onclick='reset_elements()') Reset
+
+    div#col-mod
+        div.title
+            p Model List
+        div#model-id-0.model-item(onclick='add_model(this)')
+            img.model-image(src='/images/rip.png', alt='Model Image')
+            p.model-name Model name 0
+            p.model-category Model category
+        div#model-id-1.model-item(onclick='add_model(this)')
+            img.model-image(src='/images/rip.png', alt='Model Image')
+            p.model-name Model name 1
+            p.model-category Model category
+        div#model-id-2.model-item(onclick='add_model(this)')
+            img.model-image(src='/images/rip.png', alt='Model Image')
+            p.model-name Model name 2
+            p.model-category Model category
+        div#model-id-3.model-item(onclick='add_model(this)')
+            img.model-image(src='/images/rip.png', alt='Model Image')
+            p.model-name Model name 3
+            p.model-category Model category
+        div#model-id-4.model-item(onclick='add_model(this)')
+            img.model-image(src='/images/rip.png', alt='Model Image')
+            p.model-name Model name 4
+            p.model-category Model category
