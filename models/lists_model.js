@@ -1,5 +1,5 @@
 let DocumentDBClient = require('documentdb').DocumentClient;
-let docdbUtils = require('./cosmosdb_manager.js');
+let docdbUtils = require('./cosmosdb-manager.js');
 let get_json = require('../public/javascripts/export_list');
 
 function ListsModel(documentDBClient, databaseId, collectionId) {

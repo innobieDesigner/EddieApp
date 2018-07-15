@@ -1,0 +1,46 @@
+extends layout
+block content
+    div#profile
+        h1.profile-title User profile
+        div.profile
+            div.profile-cover
+            div.profile-image
+                img(src='../images/profile-picture.jpg')
+            div.profile-details
+                img.profile-details-img(src='../images/person.png')
+                p.profile-details-title Name
+                p.profile-details-value #{loggedIn[0].lname} #{loggedIn[0].fname}
+            div.profile-details
+                img.profile-details-img(src='../images/person.png')
+                p.profile-details-title Username
+                p.profile-details-value #{loggedIn[0].uname}
+            div.profile-details
+                img.password-edit(src='../images/edit.png')
+                img.profile-details-img(src='../images/password.png')
+                p.profile-details-title Password
+                p.profile-details-value &#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;
+            div.profile-details
+                img.profile-details-img(src='../images/school.png')
+                p.profile-details-title School
+                p.profile-details-value School name goes here
+            div.profile-details
+                img.profile-details-img(src='../images/lists.png')
+                p.profile-details-title Created lists
+                div.profile-details-value
+                    div.profile-details-createdlist
+                        p.created-list-name List Name
+                        img.created-list-edit(src='../images/edit.png')
+                    div.profile-details-createdlist
+                        p.created-list-name List Name
+                        img.created-list-edit(src='../images/edit.png')
+                    div.profile-details-createdlist
+                        p.created-list-name List Name
+                        img.created-list-edit(src='../images/edit.png')
+            div.profile-details
+                img.profile-details-img(src='../images/regdate.png')
+                p.profile-details-title Registration date
+                - var date = new Date(loggedIn[0].regDate);
+                - var day = date.getDate();
+                - var month = date.getMonth() + 1;
+                - var year = date.getFullYear();
+                    p.profile-details-value #{month + "/" + day + "/" + year}

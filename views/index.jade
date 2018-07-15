@@ -1,0 +1,26 @@
+extends layout
+block content
+    div#login
+        div.login-head
+            h1.login-title Welcome to Eddie's platform!
+            - if (typeof(msg) !== 'undefined')
+                p= msg
+            - if (typeof(errors) !== 'undefined')
+                - each error in errors
+                    p= error.msg
+                    -console.log(error.msg)
+        div.login-form
+            h1.login-title-login Login
+            hr
+            form.well(action="/login", method="post")
+                .form-group
+                    label(for="username") Username:
+                    br
+                    input.form-control(name="username", type="textbox", placeholder="Username")
+                .form-group
+                    label(for="password") Password:
+                    br
+                    input.form-control(name="password", type="password" placeholder="Password")
+                button.btn.btn-primary.login-button(type="submit") Login
+            a(href="/signup")
+                button.btn.signup-button Register
