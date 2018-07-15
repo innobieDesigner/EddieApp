@@ -1,31 +1,32 @@
 extends layout
 block content
-    h1 Sign up
-    br
-    - if (typeof(errors) !== 'undefined')
-        - each error in errors
-            p= error.msg
-            -console.log(error.msg)
-    form(action="/signupuser" method="post")
-        .form-group
-            label(for="username") Username: 
-            input.form-control(type="textbox" name="uname")
-        
-        .form-group
-            label(for="fname") Firstname: 
-            input.form-control(type="textbox" name="fname")
-        
-        .form-group
-            label(for="lname") Lastname: 
-            input.form-control(type="textbox" name="lname")
-        
-        .form-group
-            label(for="mail") Mail: 
-            input.form-control(type="textbox" name="mail")
-        
-        .form-group
-            label(for="password") Password: 
-            input.form-control(type="password" name="pass")
-        button.btn.btn-primary(type="submit") Sign up
-        
-        
+    div#signup
+        h1.signup-title Welcome to Eddie's platform!
+        - if (typeof(errors) !== 'undefined')
+            - each error in errors
+                p= error.msg
+                -console.log(error.msg)
+        div.signup-form
+            h1.signup-title-signup Register your accounnt!
+            hr
+            form(action="/signupuser" method="post")
+                .form-group
+                    label(for="username") Username:
+                    input.form-control(type="textbox" name="uname", placeholder="Username")
+
+                .form-group
+                    label(for="fname") Firstname:
+                    input.form-control(type="textbox" name="fname", placeholder="First name")
+
+                .form-group
+                    label(for="lname") Lastname:
+                    input.form-control(type="textbox" name="lname", placeholder="Last name")
+
+                .form-group
+                    label(for="mail") Mail:
+                    input.form-control(type="textbox" name="mail", placeholder="E-mail")
+
+                .form-group
+                    label(for="password") Password:
+                    input.form-control(type="password" name="pass", placeholder="Password")
+                button.btn.btn-primary.signup-button(type="submit") Register

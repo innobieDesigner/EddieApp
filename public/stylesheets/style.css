@@ -1,8 +1,351 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-a {
-  color: #00B7FF;
+body {
+    background-color: #eee;
+    height: 100vh;
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* ---------- PLATFORM ----------*/
+
+.title {
+    font-size: 26px;
+    background-color: #ffd237;
+    color: #363636;
+    padding: 20px;
+    font-weight: 700;
+}
+
+.title-pair {
+    color: white;
+    background-color: #9d0086;
+}
+
+/* ---------- LOGIN BOX ----------*/
+
+#login{
+    width: 300px;
+    height: 460px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -260px;
+}
+
+.login-title{
+    text-align: center;
+    font-weight: 300;
+    padding: 20px;
+}
+
+.login-form{
+    background: #ffffff;
+    margin: 15px 0;
+    padding: 0 20px;
+    border: 1px solid grey;
+    box-shadow: 2px 2px 10px #999;
+}
+.login-title-login{
+    text-align: center;
+    padding: 10px 0;
+    font-weight: 300;
+}
+
+.form-group{
+    margin: 10px 0;
+}
+
+.form-control{
+    width: 94%;
+    padding: 3%;
+    font-size: 15px;
+}
+
+.login-button{
+    width: 100%;
+    padding: 3%;
+    font-size: 20px;
+    font-family: 'Quicksand', sans-serif;
+    border: none;
+    background: #9d0086;
+    color: white;
+    margin: 5px 0;
+}
+.signup-button{
+    width: 100%;
+    padding: 3%;
+    font-size: 20px;
+    font-family: 'Quicksand', sans-serif;
+    border: none;
+    background: #9d0086;
+    color: white;
+    margin: 5px 0 20px 0;
+}
+
+/* ---------- PROFILE VIEW ---------- */
+
+#profile{
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: -400px;
+}
+.profile-title{
+    text-align: center;
+    font-weight: 300;
+    padding: 20px;
+}
+.profile{
+    background: #ffffff;
+    margin: 15px 0;
+    border: 1px solid grey;
+    box-shadow: 2px 2px 10px #999;
+}
+.profile-cover{
+    background: #ffd237;
+    height: 60px;
+}
+.profile-image{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: -50px auto 0 auto;
+}
+.profile-image img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.profile-details{
+    width: 84%;
+    padding: 0 8%;
+    min-height: 40px;
+    margin: 20px 0;
+}
+.profile-details img{
+    float: left;
+    height: 40px;
+    margin: 0 auto;
+}
+.profile-details img.password-edit{
+    float: right;
+    height: 28px;
+    margin-top: 12px;
+}
+.profile-details .profile-details-title{
+    font-size: 12px;
+    margin-left: 50px;
+}
+.profile-details .profile-details-value{
+    font-size: 22px;
+    margin-left: 50px;
+}
+.profile-details-createdlist{
+    min-height: 30px;
+    padding: 10px;
+}
+.profile-details-createdlist:hover{
+    background: #eeeeee;
+}
+.profile-details-createdlist .created-list-name{
+    float: left;
+}
+.profile-details-createdlist img {
+    float: right;
+    height: 28px;
+    width: auto;
+}
+
+/* ---------- SIGNUP BOX ----------*/
+
+#signup{
+    width: 300px;
+    min-height: 460px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -380px;
+}
+.signup-title{
+    text-align: center;
+    font-weight: 300;
+    padding: 20px;
+}
+.signup-form{
+    background: #ffffff;
+    margin: 15px 0;
+    padding: 0 20px;
+    border: 1px solid grey;
+    box-shadow: 2px 2px 10px #999;
+}
+.signup-title-signup{
+    text-align: center;
+    padding: 10px 0;
+    font-weight: 300;
+}
+
+/* ---------- IMAGE LIST ---------- */
+
+#col-img {
+    width: 20%;
+    float: left;
+    background-color: #363636;
+    height: 100vh;
+}
+
+.image-item {
+    width: 90%;
+    padding: 5% 5%;
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.image-item:hover {
+    background-color: #555555;
+}
+
+.image-image {
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+
+.image-name {
+    color: #ffd237;
+    margin-left: 60px;
+    font-weight: 700;
+}
+
+/* ---------- LIST PAIRS ---------- */
+
+#col-pair {
+    width: 60%;
+    float: left;
+    overflow: auto;
+    height: 100vh;
+}
+
+.fifty {
+    width: 50%;
+    float: left;
+}
+
+#list-name .fifty{
+    width: 48%;
+    padding: 1%;
+    border-bottom: 1px solid black;
+    height: 40px;
+}
+
+#list-name .fifty p{
+    padding: 2% 0;
+}
+
+#list-name .fifty input{
+    width: 90%;
+    height: 20px;
+    padding: 1%;
+}
+
+#selected-images {
+    width: 50%;
+    float: left;
+}
+
+#selected-images .image-name{
+    color: #9d0086;
+    font-weight: 700;
+}
+#selected-images .image-item:hover{
+    background-color: #dddddd;
+}
+
+#selected-models {
+    width: 50%;
+    float: right;
+}
+
+#selected-models .model-name{
+    color: #9d0086;
+    font-weight: 700;
+}
+
+#selected-models .model-category{
+    color: #363636;
+}
+
+#selected-models .model-item:hover{
+    background-color: #dddddd;
+}
+
+.export-button{
+    width: 200px;
+    height: 40px;
+    color: white;
+    background-color: #9d0086;
+    font-size: 20px;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 20px;
+    right: 23%;
+}
+
+.reset-button{
+    width: 100px;
+    height: 40px;
+    color: white;
+    background-color: #9d0086;
+    font-size: 20px;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 20px;
+    left: 23%;
+}
+
+/* ---------- MODEL SIDE ---------- */
+
+#col-mod {
+    width: 20%;
+    float: left;
+    background-color: #363636;
+    height: 100vh;
+    overflow: auto;
+}
+
+.model-item {
+    width: 90%;
+    padding: 5% 5%;
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.model-item:hover {
+    background-color: #555555;
+}
+
+.model-image {
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+
+.model-name {
+    color: #ffd237;
+    margin-left: 60px;
+    font-weight: 700;
+}
+
+.model-category {
+    color: white;
+    margin-left: 60px;
 }
