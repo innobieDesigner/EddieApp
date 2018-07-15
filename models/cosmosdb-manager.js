@@ -18,7 +18,7 @@ module.exports = {
             } else {
                 if(result.length === 0){
                     let databaseSpec = {
-                        id: databaseId
+                        id: databaseId 
                     };
                     client.createDatabase(databaseSpec, (err, created) => {
                         callback(null, created);
@@ -55,7 +55,7 @@ module.exports = {
                     });
                 } else{
                     callback(null, result[0]);
-                }
+                } 
             }
         });
     }
