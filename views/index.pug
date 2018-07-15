@@ -3,12 +3,12 @@ block content
     div#login
         div.login-head
             h1.login-title Welcome to Eddie's platform!
-            - if (typeof(msg) !== 'undefined')
+            if (typeof(msg) !== 'undefined')
                 p= msg
-            - if (typeof(errors) !== 'undefined')
-                - each error in errors
+            if (typeof(errors) !== 'undefined')
+                each error in errors
                     p= error.msg
-                    -console.log(error.msg)
+                    console.log(error.msg)
         div.login-form
             h1.login-title-login Login
             hr

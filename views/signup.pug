@@ -2,10 +2,10 @@ extends layout
 block content
     div#signup
         h1.signup-title Welcome to Eddie's platform!
-        - if (typeof(errors) !== 'undefined')
-            - each error in errors
+        if (typeof(errors) !== 'undefined')
+            each error in errors
                 p= error.msg
-                -console.log(error.msg)
+                console.log(error.msg)
         div.signup-form
             h1.signup-title-signup Register your accounnt!
             hr
