@@ -1,0 +1,64 @@
+extends layout
+
+block content
+    div#platform
+        div.image-col
+            div.fixed-top-bar
+                div.top-bar
+                div.top-bar-title
+                    img.top-bar-image(src='../images/image.png')
+                hr.platform-hr
+            div#col-img.list
+                div#image-id-0.image-item(onclick='add_image(this)')
+                    img.image-image(src='/images/rip.png', alt='Image')
+                    p.image-name Eddie
+                    p.image-category Eddie
+
+        div.selected-col
+            div.fixed-top-bar
+                div.top-bar
+                div.top-bar-title
+                    img.top-bar-image(src='../images/joystick.png')
+                hr.platform-hr
+                div.created-list-name-platform
+                    div.half-left
+                        p.list-name List name:
+                    div.half-right
+                        input(id='input-list-name' type='textarea' placeholder="List's name")
+                hr.platform-hr
+            div.list
+                div#selected-images.half-left
+                div#selected-models.half-right
+            div.button-export
+                button(class='export-button', type='submit' onclick='get_json()') Submit/Save
+                button(class='reset-button', onclick='reset_elements()') Reset
+
+
+        div.model-col
+            div.fixed-top-bar
+                div.top-bar
+                div.top-bar-title
+                    img.top-bar-image(src='../images/cube.png')
+                hr.platform-hr
+
+            div#col-mod.list
+                div#model-id-0.model-item(onclick='add_model(this)')
+                    img.model-image(src='/images/rip.png', alt='Model Image')
+                    p.model-name Model name 0
+                    p.model-category Model category
+                div#model-id-1.model-item(onclick='add_model(this)')
+                    img.model-image(src='/images/rip.png', alt='Model Image')
+                    p.model-name Model name 1
+                    p.model-category Model category
+                div#model-id-2.model-item(onclick='add_model(this)')
+                    img.model-image(src='/images/rip.png', alt='Model Image')
+                    p.model-name Model name 2
+                    p.model-category Model category
+                div#model-id-3.model-item(onclick='add_model(this)')
+                    img.model-image(src='/images/rip.png', alt='Model Image')
+                    p.model-name Model name 3
+                    p.model-category Model category
+                div#model-id-4.model-item(onclick='add_model(this)')
+                    img.model-image(src='/images/rip.png', alt='Model Image')
+                    p.model-name Model name 4
+                    p.model-category Model category

@@ -41,7 +41,7 @@ UserList.prototype = {
                 } else {
                     if (user.length === 0) {
                         res.render('index', {
-                            msg: 'User not found'
+                            msg: 'Wrong username or password'
                         });
                     } else {
                         res.render('profile', {
@@ -123,8 +123,8 @@ UserList.prototype = {
             if(user.length === 0){
                 let fullName = req.user._json.name;
                 let splitName = fullName.split(" ");
-                console.log('-------------');
-                console.log(splitName);
+                /*console.log('-------------');
+                console.log(splitName);*/
                 let userToReg = {
                     uname: req.user._json.name,
                     fname: splitName[0],
@@ -146,7 +146,86 @@ UserList.prototype = {
                 });
             }
         });
+    },
+
+
+
+    //Új
+
+    getGlUser: function(req, res){
+        let self = this;
+        let querySpec = {
+            query: 'SELECT * FROM c WHERE c.uname = "' + req.user._json.displayName +'" AND c.pass = "' + req.user._json.id +'"'
+        };
+
+        self.userModel.find(querySpec, function(err, user){
+            if(err){
+                throw err;
+            }
+            if(user.length === 0){
+                let userToReg = {
+                    uname: req.user._json.displayName,
+                    fname: req.user._json.name.familyName,
+                    lname: req.user._json.name.givenName,
+                    mail: req.user._json.emails[0].value,
+                    pass: req.user._json.id
+                };
+                self.userModel.addUser(userToReg, function(err){
+                    if(err){
+                        throw err;
+                    }
+                    res.render('profile', {
+                        loggedIn: [userToReg]
+                    });
+                });
+            } else{
+                res.render('profile', {
+                    loggedIn: user
+                });
+            }
+        });
+    },
+
+    getOfUser: function(req, res) {
+        let self = this;
+        let querySpec = {
+            query: 'SELECT * FROM c WHERE c.uname = "' + req.user._json.name +'" AND c.pass = "' + req.user._json.tid +'"'
+        };
+
+        self.userModel.find(querySpec, function(err, user){
+            if(err){
+                throw err;
+            }
+            if(user.length === 0){
+                let fullName = req.user._json.name;
+                let splitName = fullName.split(" ");
+                /*console.log('-------------');
+                console.log(splitName);*/
+                let userToReg = {
+                    uname: req.user._json.name,
+                    fname: splitName[0],
+                    lname: splitName[1],
+                    mail: req.user._json.preferred_username,
+                    pass: req.user._json.tid
+                };
+                self.userModel.addUser(userToReg, function(err){
+                    if(err){
+                        throw err;
+                    }
+                    res.render('profile', {
+                        loggedIn: [userToReg]
+                    });
+                });
+            } else{
+                res.render('profile', {
+                    loggedIn: user
+                });
+            }
+        });
     }
+
+    //Új vége
+
 };
 
 module.exports = UserList;
