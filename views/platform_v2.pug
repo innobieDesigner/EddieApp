@@ -9,10 +9,11 @@ block content
                     img.top-bar-image(src='../images/image.png')
                 hr.platform-hr
             div#col-img.list
-                div#image-id-0.image-item(onclick='add_image(this)')
-                    img.image-image(src='/images/rip.png', alt='Image')
-                    p.image-name Eddie
-                    p.image-category Eddie
+                if (typeof(selected) === 'undefined')
+                    div#image-id-0.image-item(onclick='add_image(this)')
+                        img.image-image(src='/images/rip.png', alt='Image')
+                        p.image-name Eddie
+                        p.image-category Eddie
 
         div.selected-col
             div.fixed-top-bar
@@ -23,15 +24,32 @@ block content
                 div.created-list-name-platform
                     div.half-left
                         p.list-name List name:
+                        if (typeof(listName) !== 'undefined')
+                            input(id='input-list-name' type='textarea' placeholder="List's name" value=listName)
+                        else
+                            input(id='input-list-name' type='textarea' placeholder="List's name")
                     div.half-right
-                        input(id='input-list-name' type='textarea' placeholder="List's name")
+                        p.list-id List ID: -
+
                 hr.platform-hr
             div.list
                 div#selected-images.half-left
+                    if (typeof(selected) !== 'undefined')
+                        div#image-id-0.image-item(onclick='remove_image(this)')
+                            img.image-image(src='/images/rip.png', alt='Image')
+                            p.image-name Eddie
+                            p.image-category Eddie
                 div#selected-models.half-right
+                    if (typeof(selected) !== 'undefined')
+                        each model in selected
+                            div.model-item(onclick='remove_model(this)' id=model.id)
+                                img.model-image(src=model.imgLink, alt='Model Image')
+                                p.model-name #{model.name}
+                                p.model-category #{model.category}
             div.button-export
-                button(class='export-button', type='submit' onclick='get_json()') Submit/Save
+                button(class='export-button', type='submit' onclick='send_json()') Submit/Save
                 button(class='reset-button', onclick='reset_elements()') Reset
+                button(class='back-button', onclick='back_to_profile()') Back to profile
 
 
         div.model-col
@@ -42,23 +60,17 @@ block content
                 hr.platform-hr
 
             div#col-mod.list
-                div#model-id-0.model-item(onclick='add_model(this)')
-                    img.model-image(src='/images/rip.png', alt='Model Image')
-                    p.model-name Model name 0
-                    p.model-category Model category
-                div#model-id-1.model-item(onclick='add_model(this)')
-                    img.model-image(src='/images/rip.png', alt='Model Image')
-                    p.model-name Model name 1
-                    p.model-category Model category
-                div#model-id-2.model-item(onclick='add_model(this)')
-                    img.model-image(src='/images/rip.png', alt='Model Image')
-                    p.model-name Model name 2
-                    p.model-category Model category
-                div#model-id-3.model-item(onclick='add_model(this)')
-                    img.model-image(src='/images/rip.png', alt='Model Image')
-                    p.model-name Model name 3
-                    p.model-category Model category
-                div#model-id-4.model-item(onclick='add_model(this)')
-                    img.model-image(src='/images/rip.png', alt='Model Image')
-                    p.model-name Model name 4
-                    p.model-category Model category
+                if (typeof(models) !== 'undefined')
+                    each model in models
+                        div.model-item(onclick='add_model(this)' id=model.id)
+                            img.model-image(src=model.imgLink , alt='Model Image')
+                            p.model-name #{model.name}
+                            p.model-category #{model.category}
+
+        div#modal_ist_id.modal
+            div.modal-content
+                div.modal-header
+                p.modal-title-list-id Your list id:
+                p#model_id.modal-text-list-id 123456
+                div.modal-buttons
+                    button#submit_pw.modal-button(type='submit') OK!

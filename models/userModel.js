@@ -61,21 +61,41 @@ UserModel.prototype = {
     getUserId: function(userId, callback) {
         let self = this;
         let querySpec = {
-            query: 'SELECT * FROM root r WHERE r.id = @id',
-            parameters: [
-                {
-                    name: '@id',
-                    value: userId
-                }
-            ]
+            query: 'SELECT * FROM c WHERE c.id = "' + userId +'"'
         };
+        console.log(querySpec);
 
         self.client.queryDocuments(self.collection._self, querySpec).toArray(function(err, result) {
             if(err){
                 callback(err);
             } else{
+                /* console.log('//////////////////');
+                console.log(result); */
                 callback(null, result[0]);
             }
+        });
+    },
+
+
+    updateUser: function(userId, updatedDoc, callback) {
+        let self = this;
+    
+        self.getUserId(userId, function(err, doc) {
+            console.log(doc);
+        if (err) {
+            callback(err);
+        } else {
+            self.client.replaceDocument(doc._self, updatedDoc, function(err, replaced) {
+            if (err) {
+                callback(err);
+            } else {
+                /* console.log('+-+-+-+-+-+-+-+');
+                console.log(replaced);
+                console.log('+-+-+-+-+-+-+-+'); */
+                callback(null, replaced);
+            }
+            });
+        }
         });
     }
 

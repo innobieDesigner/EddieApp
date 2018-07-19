@@ -1,6 +1,17 @@
 let DocumentDBClient = require('documentdb').DocumentClient;
 let async = require('async');
 
+let UserModel = require('../models/userModel');
+let Model_listList = require('./model_listList');
+const config = require('../config');
+
+let docDbClient = new DocumentDBClient(config.host, {
+    masterKey: config.authKey
+  });
+let model_listModel = new UserModel(docDbClient, config.databaseId, config.model_list_collectionId);
+let modelListList = new Model_listList(model_listModel);
+model_listModel.init();
+
 function UserList(userModel) {
     this.userModel = userModel;
 }
@@ -20,6 +31,33 @@ UserList.prototype = {
             res.render('index', {
                 title: 'Users',
                 users: user
+            });
+        });
+    },
+
+    getUserById: function(req, res){
+        let self = this;
+        let querySpec = {
+            query: 'SELECT * FROM c WHERE c.id = "' + req.query.uid + '"'
+        };
+        /* console.log('+++++++++++++++++++++++');
+        console.log(req.query);
+        console.log('+++++++++++++++++++++++'); */
+        self.userModel.find(querySpec, function (err, user) {
+            if (err) {
+                throw err;
+            }
+            //console.log(user);
+            modelListList.showModelLists(user[0], function(err, modelList){
+                if(err){
+                    console.log(err);
+                    throw err;
+                }else{
+                    res.render('profile', {
+                        loggedIn: user,
+                        modelList: modelList
+                    });
+                }
             });
         });
     },
@@ -44,8 +82,16 @@ UserList.prototype = {
                             msg: 'Wrong username or password'
                         });
                     } else {
-                        res.render('profile', {
-                            loggedIn: user
+                        modelListList.showModelLists(user[0], function(err, modelList){
+                            if(err){
+                                console.log(err);
+                                throw err;
+                            }else{
+                                res.render('profile', {
+                                    loggedIn: user,
+                                    modelList: modelList
+                                });
+                            }
                         });
                     }
                 }
@@ -136,13 +182,29 @@ UserList.prototype = {
                     if(err){
                         throw err;
                     }
-                    res.render('profile', {
-                        loggedIn: [userToReg]
+                    modelListList.showModelLists(userToReg, function(err, modelList){
+                        if(err){
+                            console.log(err);
+                            throw err;
+                        }else{
+                            res.render('profile', {
+                                loggedIn: [userToReg],
+                                modelList: modelList
+                            });
+                        }
                     });
                 });
             } else{
-                res.render('profile', {
-                    loggedIn: user
+                modelListList.showModelLists(user[0], function(err, modelList){
+                    if(err){
+                        console.log(err);
+                        throw err;
+                    }else{
+                        res.render('profile', {
+                            loggedIn: user,
+                            modelList: modelList
+                        });
+                    }
                 });
             }
         });
@@ -174,13 +236,29 @@ UserList.prototype = {
                     if(err){
                         throw err;
                     }
-                    res.render('profile', {
-                        loggedIn: [userToReg]
+                    let modelList = modelListList.showModelLists(userToReg, function(err, modelList){
+                        if(err){
+                            console.log(err);
+                            throw err;
+                        }else{
+                            res.render('profile', {
+                                loggedIn: [userToReg],
+                                modelList: modelList
+                            });
+                        }
                     });
                 });
             } else{
-                res.render('profile', {
-                    loggedIn: user
+                modelListList.showModelLists(user[0], function(err, modelList){
+                    if(err){
+                        console.log(err);
+                        throw err;
+                    }else{
+                        res.render('profile', {
+                            loggedIn: user,
+                            modelList: modelList
+                        });
+                    }
                 });
             }
         });
@@ -212,13 +290,29 @@ UserList.prototype = {
                     if(err){
                         throw err;
                     }
-                    res.render('profile', {
-                        loggedIn: [userToReg]
+                    let modelList = modelListList.showModelLists(userToReg, function(err, modelList){
+                        if(err){
+                            console.log(err);
+                            throw err;
+                        }else{
+                            res.render('profile', {
+                                loggedIn: [userToReg],
+                                modelList: modelList
+                            });
+                        }
                     });
                 });
             } else{
-                res.render('profile', {
-                    loggedIn: user
+                modelListList.showModelLists(user[0], function(err, modelList){
+                    if(err){
+                        console.log(err);
+                        throw err;
+                    }else{
+                        res.render('profile', {
+                            loggedIn: user,
+                            modelList: modelList
+                        });
+                    }
                 });
             }
         });

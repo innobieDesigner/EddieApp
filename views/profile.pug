@@ -2,6 +2,8 @@ extends layout
 block content
     div#profile
         h1.profile-title User profile
+        if (typeof(msg) !== 'undefined')
+            p= msg
         div.profile
             div.profile-cover
             div.profile-image
@@ -15,27 +17,29 @@ block content
                 p.profile-details-title Username
                 p.profile-details-value #{loggedIn[0].uname}
             div.profile-details
-                img.password-edit(src='../images/edit.png')
+                img#edit_pw_btn.password-edit(src='../images/edit.png' onclick='pw_edit()')
                 img.profile-details-img(src='../images/password.png')
                 p.profile-details-title Password
                 p.profile-details-value &#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;
             div.profile-details
                 img.profile-details-img(src='../images/school.png')
+                img#edit_school_btn.password-edit(src='../images/edit.png' onclick='school_edit()')
                 p.profile-details-title School
                 p.profile-details-value School name goes here
             div.profile-details
                 img.profile-details-img(src='../images/lists.png')
                 p.profile-details-title Created lists
                 div.profile-details-value
-                    div.profile-details-createdlist
-                        p.created-list-name List Name
-                        img.created-list-edit(src='../images/edit.png')
-                    div.profile-details-createdlist
-                        p.created-list-name List Name
-                        img.created-list-edit(src='../images/edit.png')
-                    div.profile-details-createdlist
-                        p.created-list-name Add List
-                        img.created-list-edit(src='../images/brush.png')
+                    if (typeof(modelList) !== 'undefined')
+                        each list in modelList
+                            a(href='/editlist?uid=' + loggedIn[0].id + '&lid=' + list.id )
+                                div.profile-details-createdlist
+                                    p.created-list-name #{list.list_name}
+                                    img.created-list-edit(src='../images/edit.png')
+                    a(href='/addlist?uid=' + loggedIn[0].id)
+                        div.profile-details-createdlist
+                            p.created-list-name Add List
+                            img.created-list-edit(src='../images/brush.png')
             div.profile-details
                 img.profile-details-img(src='../images/regdate.png')
                 p.profile-details-title Registration date
@@ -44,3 +48,23 @@ block content
                 - var month = date.getMonth() + 1;
                 - var year = date.getFullYear();
                 p.profile-details-value #{month + "/" + day + "/" + year}
+                
+            div#edit_school.modal
+                div.modal-content
+                    div.modal-header
+                    p.modal-title Edit your school's name:
+                    p.modal-text School's name:
+                    input(type='text', name='schoolname', placeholder="School's name")
+                    div.modal-buttons
+                        button#submit_school.modal-button(type='submit') Submit
+                        button#close_school.modal-button Close
+
+            div#edit_pw.modal
+                div.modal-content
+                    div.modal-header
+                    p.modal-title Edit your password:
+                    p.modal-text New password:
+                    input(type='text', name='password', placeholder="Password")
+                    div.modal-buttons
+                        button#submit_pw.modal-button(type='submit') Submit
+                        button#close_pw.modal-button Close

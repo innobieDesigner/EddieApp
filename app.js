@@ -1,6 +1,16 @@
 const DocumentDBClient = require('documentdb').DocumentClient;
 const config = require('./config');
 const UserList = require('./routes/userlist');
+
+
+
+//Új2
+const ModelList = require('./routes/modelList');
+const Model_listList = require('./routes/model_listList');
+//Új2 vége
+
+
+
 const UserModel = require('./models/userModel');
 const expressValidator = require('express-validator');
 const createError = require('http-errors');
@@ -53,9 +63,24 @@ app.use(session({
 let docDbClient = new DocumentDBClient(config.host, {
   masterKey: config.authKey
 });
-let userModel = new UserModel(docDbClient, config.databaseId, config.collectionId);
+let userModel = new UserModel(docDbClient, config.databaseId, config.user_collectionId);
 let userList = new UserList(userModel);
 userModel.init();
+
+
+
+//Új2
+let modelModel = new UserModel(docDbClient, config.databaseId, config.model_collectionId);
+let modelList = new ModelList(modelModel);
+modelModel.init();
+
+let model_listModel = new UserModel(docDbClient, config.databaseId, config.model_list_collectionId);
+let modelListList = new Model_listList(model_listModel);
+model_listModel.init();
+//Új2 vége
+
+
+
 
 app.get('/', function(req, res){
   res.render('index');
@@ -154,6 +179,41 @@ app.get('/office/callback', passport.authenticate('azuread-openidconnect', {sess
   userList.getOfUser(req, res);
 });
 //Új vége
+
+
+
+//Új2
+app.get('/addlist', function(req, res){
+  modelList.getModels(req, res);
+});
+app.post('/addlist/done', function(req, res){
+/*   console.log('-----------------');
+  console.log('addlist/done');
+  console.log(req.body);
+  console.log('-----------------'); */
+  modelListList.addModelList(req, res);
+});
+
+app.get('/editlist', function(req, res){
+  modelListList.getModelList(req, res);
+});
+app.post('/editlist/done', function(req, res){
+/*   console.log('-----------------');
+  console.log('editlist/done');
+  console.log(req.body);
+  console.log('-----------------'); */
+  modelListList.editModelList(req, res);
+});
+
+app.get('/profile', function(req, res){
+  userList.getUserById(req, res);
+});
+
+
+app.get('/setSchool', function(req, res){
+  res.send("Set school");
+})
+//Új2 vége
 
 
 
